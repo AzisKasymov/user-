@@ -23,3 +23,28 @@ class TestUser(unittest.TestCase):
             self.assertEqual(UserService.find_user(user.user_id), user)
             self.assertTrue(UserService.delete_user(user.user_id))
             self.assertIsNone(UserService.find_user(user.user_id))
+
+            def test_get_number(self):
+                UserService.users.clear()
+                user1 = User("Charlie", "Davis", datetime(2001, 12, 5))
+                user2 = User("Diana", "Evans", datetime(1999, 8, 23))
+                UserService.add_user(user1)
+                UserService.add_user(user2)
+                self.assertEqual(UserService.get_number(), 2)
+
+    class TestUserUtil(unittest.TestCase):
+            def test_generate_user_id(self):
+                user_id = UserUtil.generate_user_id()
+                self.assertTrue(str(user_id).startswith(str(datetime.today().year)[-2:]))
+                self.assertEqual(len(str(user_id)), 9)
+
+            def test_generate_password(self):
+                password = UserUtil.generate_password()
+                self.assertTrue(UserUtil.is_strong_password(password))
+
+            def test_validate_email(self):
+                self.assertTrue(UserUtil.validate_email("azisomon@gmail.com"))
+                self.assertFalse(UserUtil.validate_email("aziskas@gmail.com"))
+
+        if __name__ == "__main__":
+            unittest.main()
