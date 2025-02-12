@@ -1,6 +1,3 @@
-from user import user
-
-
 class UserService:
     users = {}
 
@@ -14,15 +11,15 @@ class UserService:
 
     @classmethod
     def delete_user(cls, user_id):
-        if user_id in cls.users:
-            del cls.users[user_id]
-            return True
-        return False
+        return cls.users.pop(user_id, None) is not None
 
     @classmethod
-    def update_user(cls, user_id, user_update):
-        if user_id in cls.users:
-            cls.users[user_id].__dict__.update(user_update.__dict__)
+    def update_user(cls, user_id, **kwargs):
+        user = cls.find_user(user_id)
+        if user:
+            for key, value in kwargs.items():
+                if hasattr(user, key):
+                    setattr(user, key, value)
             return True
         return False
 
