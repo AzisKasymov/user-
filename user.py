@@ -1,9 +1,12 @@
+import random
+import string
+import re
 from datetime import datetime
 
 
 class User:
-    def __init__(self, user_id, name, surname, birthday):
-        self.user_id = user_id
+    def __init__(self, name, surname, birthday):
+        self.user_id = UserUtil.generate_user_id()
         self.name = name
         self.surname = surname
         self.email = UserUtil.generate_email(name, surname, "example.com")
