@@ -1,3 +1,4 @@
+from user import user 
 class UserService:
     users = {}
 
