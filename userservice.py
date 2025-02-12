@@ -1,4 +1,4 @@
-from user import user 
+from user import User
 class UserService:
     users = {}
 

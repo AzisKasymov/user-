@@ -3,6 +3,8 @@ import string
 import re
 from datetime import datetime
 
+from userutil import UserUtil
+
 
 class User:
     def __init__(self, name, surname, birthday):

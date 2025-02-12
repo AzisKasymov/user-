@@ -6,7 +6,7 @@ from datetime import datetime
 
 class TestUser(unittest.TestCase):
     def test_user_creation(self):
-        user = User("abduazis", "kasymov", datetime(2006, 8, 05))
+        user = User("abduazis", "kasymov", datetime(2006, 8, 5))
         self.assertEqual(user.name, "abduazis")
         self.assertEqual(user.surname, "kasymov")
         self.assertTrue(UserUtil.validate_email(user.email))
@@ -45,6 +45,3 @@ class TestUser(unittest.TestCase):
             def test_validate_email(self):
                 self.assertTrue(UserUtil.validate_email("azisomon@gmail.com"))
                 self.assertFalse(UserUtil.validate_email("aziskas@gmail.com"))
-
-        if __name__ == "__main__":
-            unittest.main()
